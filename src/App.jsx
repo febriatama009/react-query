@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import PostList1 from "./components/PostList1";
+import PostList2 from "./components/PostList2";
+import Post from "./components/Post";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState(<PostList1 />);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={() => setCurrentPage(<PostList1 />)}>Post List 1</button>{" "}
+      <span></span>
+      <button onClick={() => setCurrentPage(<PostList2 />)}>Post List 2</button>
+      <span></span>
+      <button onClick={() => setCurrentPage(<Post id={1} />)}>
+        First Post
+      </button>
+      <br />
+      {currentPage}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
